@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .dashboard {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    .balance-box {
+      background: #f0f8ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    .pending {
+      color: red;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="loginContainer">
+    <h2>Client Login</h2>
+    <input type="text" id="usernameInput" placeholder="Enter your username">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="container dashboard" id="dashboard">
+    <h2>Welcome</h2>
+    <div class="balance-box">
+      <p><strong>Balance:</strong> <span id="balanceText">R$ 0.00</span></p>
+      <p><strong>Fee:</strong> <span id="feeText">R$ 0.00</span></p>
+    </div>
+    <button onclick="withdraw()">Withdraw</button>
+    <p class="pending" id="withdrawMessage"></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('usernameInput').value;
+      if (!username) {
+        alert("Please enter a username");
+        return;
+      }
+
+      document.getElementById('loginContainer').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+
+      // Set default (fake) balance and fee
+      document.getElementById('balanceText').textContent = "R$ 15.000,00";
+      document.getElementById('feeText').textContent = "R$ 50,00";
+
+      // You can customize this per user later
+    }
+
+    function withdraw() {
+      document.getElementById('withdrawMessage').textContent =
+        "⚠️ Withdrawal pending due to unpaid fee. Please complete the fee to receive your profit.";
+    }
+  </script>
+</body>
+      </html>
